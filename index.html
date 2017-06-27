@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tic Tac Toe</title>
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <h3>Tic Tac Toe</h3>
+            <p>Choose your figure.</p>
+            <button id="x" class="btn btn-figure" onClick="setGame(this.id)">X</button>
+            <button id="o" class="btn btn-figure" onClick="setGame(this.id)">O</button>
+            <p class="description">Player X play first.</p>
+          </div>
+        </div>
+        
+        <div class="game-board">
+            <div id="field-0" class="game-field" onClick="insertMove(0)"></div>
+            <div id="field-1" class="game-field" onClick="insertMove(1)"></div>
+            <div id="field-2" class="game-field" onClick="insertMove(2)"></div>
+            <div id="field-3" class="game-field" onClick="insertMove(3)"></div>
+            <div id="field-4" class="game-field" onClick="insertMove(4)"></div>
+            <div id="field-5" class="game-field" onClick="insertMove(5)"></div>
+            <div id="field-6" class="game-field" onClick="insertMove(6)"></div>
+            <div id="field-7" class="game-field" onClick="insertMove(7)"></div>
+            <div id="field-8" class="game-field" onClick="insertMove(8)"></div>
+        </div>
+      
+        <div id="myAlert" class="alert">
+            <p id="status"></p>
+            <button id="play-again" class="btn btn-alert" onClick="resetGame()">Play again</button>
+        </div>
+        
+        <div class="footer">
+            <p>Made with &hearts; by <a href="https://jromest.github.io/">Jerome Estiller</a></p>
+        </div>
+      
+        <script src="js/script.js"></script>
+    </body>
+</html>
