@@ -1,9 +1,9 @@
-var game = {
+const game = {
   user: '',
   computer: '',
   currentPlayer: '',
   board: []
-}
+};
 
 const winCombination = [
   [0, 1, 2],
@@ -54,7 +54,7 @@ function setGame(id) {
 // if it sets to X, it chooses
 // random spot on the board
 function firstMove() {
-  var randomSpot = Math.floor(Math.random() * 9);
+  const randomSpot = Math.floor(Math.random() * 9);
   insertMove(randomSpot);
 }
 
@@ -114,11 +114,11 @@ function checkForWinner(player) {
 // of remaining empty field and reset the
 // game board object to prevent Draw
 function gameOver() {
-  var remainFields = checkEmptyFields(game.board);
+  const remainFields = checkEmptyFields(game.board);
 
   if (remainFields !== 0) {
-    for (var i = 0; i < remainFields.length; i++) {
-      var emptyField = document.getElementById('field-' + remainFields[i]);
+    for (let i = 0; i < remainFields.length; i++) {
+      const emptyField = document.getElementById('field-' + remainFields[i]);
       emptyField.removeAttribute('onClick');
     }
   }
@@ -159,11 +159,13 @@ function resetGame() {
 // in the winning combination array
 function hasWinner(gameBoard, player, winner = false) {
   for (var i = 0; i < winCombination.length; i++) {
-    if (gameBoard[winCombination[i][0]] === player && gameBoard[winCombination[i][1]] === player && gameBoard[winCombination[i][2]] === player) {
+    if (gameBoard[winCombination[i][0]] === player &&
+        gameBoard[winCombination[i][1]] === player &&
+        gameBoard[winCombination[i][2]] === player) {
       if (winner) {
         return [winCombination[i][0],
-          winCombination[i][1],
-          winCombination[i][2]
+                winCombination[i][1],
+                winCombination[i][2]
         ];
       }
       return true;
