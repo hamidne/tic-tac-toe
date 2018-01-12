@@ -103,7 +103,7 @@ function checkForWinner(player) {
 
     // i'm confident with my AI algorithm
     // it's either draw or you will lose :P
-    stat.innerHTML = player === 'user' ? 'You Win!' : 'You Lose';
+    stat.innerHTML = player === 'user' ? 'شما برنده شدید!' : 'شما بازنده شدید!';
     info.style.display = 'block';
     gameOver();
   }
@@ -130,7 +130,7 @@ function gameOver() {
 // game board and no winners it means draw
 function checkForDraw() {
   if (game.board.indexOf('') === -1) {
-    stat.innerHTML = 'Draw';
+    stat.innerHTML = 'مساوی';
     info.style.display = 'block';
     startGame();
   }
