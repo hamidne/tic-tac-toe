@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html dir="rtl" lang="fa">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tic Tac Toe</title>
+        <title>بازی دوز</title>
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
         <div id="myModal" class="modal">
           <div class="modal-content">
-            <h3>Tic Tac Toe</h3>
-            <p>Choose your figure.</p>
+            <h3>بازی دوز</h3>
+            <p>لطفا نماد خود را انتخاب کنید.</p>
             <button id="x" class="btn btn-figure" onClick="setGame(this.id)">X</button>
             <button id="o" class="btn btn-figure" onClick="setGame(this.id)">O</button>
-            <p class="description">Player X play first.</p>
+            <p class="description">بازیکن X ابتدا بازی را آغاز می کند</p>
           </div>
         </div>
         
@@ -31,11 +31,7 @@
       
         <div id="myAlert" class="alert">
             <p id="status"></p>
-            <button id="play-again" class="btn btn-alert" onClick="resetGame()">Play again</button>
-        </div>
-        
-        <div class="footer">
-            <p>Made with &hearts; by <a href="https://jromest.github.io/">Jerome Estiller</a></p>
+            <button id="play-again" class="btn btn-alert" onClick="resetGame()">بازی مجدد</button>
         </div>
       
         <script src="js/script.js"></script>

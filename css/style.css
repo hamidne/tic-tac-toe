@@ -1,149 +1,149 @@
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-}
-
-body {
-   font-family: 'Helvetica', sans-serif;
-}
-
-.modal {
-   display: block;
-   position:fixed;
-   top: 0;
-   left: 0;
-   right: 0;
-   z-index: 1;
-}
-
-.modal-content {
-   width: 250px;
-   height: 250px;
-   margin: 50px auto;
-   border-radius: 12px;
-   border: 1px solid #ccc;
-   text-align: center;
-   padding: 30px 0;
-   background-color: #fff;
-   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ 
+ body {
+    font-family: 'IRANSans', sans-serif;
+ }
+ 
+ .modal {
+    display: block;
+    position:fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+ }
+ 
+ .modal-content {
+    width: 250px;
+    height: 250px;
+    margin: 50px auto;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 30px 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+     -webkit-animation-name: animatetop;
+     -webkit-animation-duration: 0.4s;
+     animation-name: animatetop;
+     animation-duration: 0.4s;
+ }
+ 
+ @-webkit-keyframes animatetop {
+     from {top: -300px; opacity: 0;} 
+     to {top: 0; opacity: 1;}
+ }
+ 
+ @keyframes animatetop {
+     from {top: -300px; opacity: 0;}
+     to {top: 0; opacity: 1;}
+ }
+ 
+ .modal-content h3 {
+     margin-bottom: 40px;
+ }
+ 
+ .description {
+     font-size: 12px;
+     color: #555;
+ }
+ 
+ .btn {
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    background-color: #2196f3;
+ }
+ 
+ .btn-figure {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    margin: 20px 10px;
+ }
+ 
+ .game-board {
+    width: 250px;
+    height: 250px;
+    margin: 50px auto;
+    display: block; /* if don't support flexbox*/
+    display: flex;
+    flex-wrap: wrap;
+ }
+ 
+ .game-field {
+    width: 83px;
+    height: 83px;
+    font-size: 50px;
+    /* if browser don't support flexbox*/
+    display: block;
+    float: right;
+    text-align: center;
+    padding: 10px 0;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ 
+ #field-0, #field-1, #field-2,
+ #field-3, #field-4, #field-5 {
+    border-bottom: 3px solid #555; 
+ }
+ 
+ #field-0, #field-3, #field-6,
+ #field-1, #field-4, #field-7 {
+    border-left: 3px solid #555; 
+ }
+ 
+ .winner {
+     font-weight: 600;
+     color: #2196f3;
+ }
+ 
+ .alert {
+    display: none;
+    width: 250px;
+    margin: 0 auto;
+    background-color: #eee;
+    border-radius: 5px;
+    text-align: center;
+    padding: 20px;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
     animation-duration: 0.4s;
-}
-
-@-webkit-keyframes animatetop {
-    from {top: -300px; opacity: 0;} 
-    to {top: 0; opacity: 1;}
-}
-
-@keyframes animatetop {
-    from {top: -300px; opacity: 0;}
-    to {top: 0; opacity: 1;}
-}
-
-.modal-content h3 {
-    margin-bottom: 40px;
-}
-
-.description {
+ }
+ 
+ .alert p {
+     font-size: 20px;
+     margin-bottom: 20px;
+ }
+ 
+ .btn-alert {
+    padding: 10px 15px;
+    font-size: 15px;
+ }
+ 
+ .footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
     font-size: 12px;
-    color: #555;
-}
-
-.btn {
-   color: #fff;
-   border: none;
-   border-radius: 3px;
-   background-color: #2196f3;
-}
-
-.btn-figure {
-   width: 50px;
-   height: 50px;
-   font-size: 20px;
-   margin: 20px 10px;
-}
-
-.game-board {
-   width: 250px;
-   height: 250px;
-   margin: 50px auto;
-   display: block; /* if don't support flexbox*/
-   display: flex;
-   flex-wrap: wrap;
-}
-
-.game-field {
-   width: 83px;
-   height: 83px;
-   font-size: 50px;
-   /* if browser don't support flexbox*/
-   display: block;
-   float: left;
-   text-align: center;
-   padding: 10px 0;
-  
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
-
-#field-0, #field-1, #field-2,
-#field-3, #field-4, #field-5 {
-   border-bottom: 3px solid #555; 
-}
-
-#field-0, #field-3, #field-6,
-#field-1, #field-4, #field-7 {
-   border-right: 3px solid #555; 
-}
-
-.winner {
-    font-weight: 600;
+    padding-bottom: 20px;
+ }
+ 
+ .footer a {
     color: #2196f3;
-}
-
-.alert {
-   display: none;
-   width: 250px;
-   margin: 0 auto;
-   background-color: #eee;
-   border-radius: 5px;
-   text-align: center;
-   padding: 20px;
-   -webkit-animation-name: animatetop;
-   -webkit-animation-duration: 0.4s;
-   animation-name: animatetop;
-   animation-duration: 0.4s;
-}
-
-.alert p {
-    font-size: 20px;
-    margin-bottom: 20px;
-}
-
-.btn-alert {
-   padding: 10px 15px;
-   font-size: 15px;
-}
-
-.footer {
-   position: absolute;
-   bottom: 0;
-   left: 0;
-   right: 0;
-   text-align: center;
-   font-size: 12px;
-   padding-bottom: 20px;
-}
-
-.footer a {
-   color: #2196f3;
-   text-decoration: none;
-}
-
-.footer a:hover {
-    text-decoration: underline;
-}
+    text-decoration: none;
+ }
+ 
+ .footer a:hover {
+     text-decoration: underline;
+ }
