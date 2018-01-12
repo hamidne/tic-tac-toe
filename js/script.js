@@ -29,7 +29,7 @@ if (document.readyState === 'complete' || document.readyState !== 'loading') {
 
 // initialized game board arrays
 function startGame() {
-  for (var i = 0; i < 9; i++) {
+  for (let i = 0; i < 9; i++) {
     game.board[i] = '';
   }
 }
@@ -61,7 +61,7 @@ function firstMove() {
 // insert the player character
 // to the game board
 function insertMove(id) {
-  var gameField = document.getElementById('field-' + id);
+  let gameField = document.getElementById('field-' + id);
 
   if (game.board[id] === '') {
 
@@ -78,7 +78,7 @@ function insertMove(id) {
     }
 
     if (game.currentPlayer === 'computer') {
-      var bestMove = minimax(game.board, game.computer, 0);
+      let bestMove = minimax(game.board, game.computer, 0);
 
       setTimeout(function () {
         insertMove(bestMove.index);
@@ -93,11 +93,11 @@ function insertMove(id) {
 function checkForWinner(player) {
   player === 'user' ? player = 'computer' : player = 'user';
 
-  var winningArr = hasWinner(game.board, game[player], true);
+  let winningArr = hasWinner(game.board, game[player], true);
 
   if (winningArr !== true && winningArr !== false) {
-    for (var i = 0; i < winningArr.length; i++) {
-      var winningField = document.getElementById('field-' + winningArr[i]);
+    for (let i = 0; i < winningArr.length; i++) {
+      let winningField = document.getElementById('field-' + winningArr[i]);
       winningField.classList.add('winner');
     }
 
@@ -118,7 +118,7 @@ function gameOver() {
 
   if (remainFields !== 0) {
     for (let i = 0; i < remainFields.length; i++) {
-      const emptyField = document.getElementById('field-' + remainFields[i]);
+      const emptyField = document.getElementById(`field-${remainFields[i]}`);
       emptyField.removeAttribute('onClick');
     }
   }
@@ -144,21 +144,21 @@ function resetGame() {
 
   // remove all characters on the game field
   // and put back the attribute onClick
-  for (var i = 0; i < 9; i++) {
-    var attr = 'insertMove(' + i + ')';
-    var gameField = document.getElementById('field-' + i);
+  for (let i = 0; i < 9; i++) {
+    const attr = `insertMove(${i})`;
+    const gameField = document.getElementById(`field-${i}`);
     gameField.innerHTML = '';
     gameField.setAttribute('onClick', attr);
     gameField.classList.remove('winner');
   }
 
-  modal.style.display = 'block';
+  modal.style.display = 'flex';
 }
 
 // check for winner based
 // in the winning combination array
 function hasWinner(gameBoard, player, winner = false) {
-  for (var i = 0; i < winCombination.length; i++) {
+  for (let i = 0; i < winCombination.length; i++) {
     if (gameBoard[winCombination[i][0]] === player &&
         gameBoard[winCombination[i][1]] === player &&
         gameBoard[winCombination[i][2]] === player) {
@@ -177,8 +177,8 @@ function hasWinner(gameBoard, player, winner = false) {
 // look for empty spot on the game board and
 // return an array of index of empty spot
 function checkEmptyFields(gameBoard) {
-  var emptyFields = [];
-  for (var i = 0; i < gameBoard.length; i++) {
+  const emptyFields = [];
+  for (let i = 0; i < gameBoard.length; i++) {
     if (gameBoard[i] === '') {
       emptyFields.push(i);
     }
@@ -191,7 +191,7 @@ function checkEmptyFields(gameBoard) {
 // using minimax algorithm
 function minimax(gameBoard, player, depth) {
 
-  var emptyFields = checkEmptyFields(gameBoard);
+  let emptyFields = checkEmptyFields(gameBoard);
 
   if (hasWinner(gameBoard, game.computer)) {
     return {
@@ -208,21 +208,21 @@ function minimax(gameBoard, player, depth) {
   }
 
   // array of scores object of every game state
-  var scoreList = [];
+  let scoreList = [];
   depth++;
 
-  for (var i = 0; i < emptyFields.length; i++) {
+  for (let i = 0; i < emptyFields.length; i++) {
 
-    var objScore = {};
+    let objScore = {};
 
     objScore.index = emptyFields[i];
     gameBoard[emptyFields[i]] = player;
 
     if (player === game.computer) {
-      var result = minimax(gameBoard, game.user, depth);
+      let result = minimax(gameBoard, game.user, depth);
       objScore.score = result.score;
     } else {
-      var result = minimax(gameBoard, game.computer, depth);
+      let result = minimax(gameBoard, game.computer, depth);
       objScore.score = result.score;
     }
 
@@ -236,7 +236,7 @@ function minimax(gameBoard, player, depth) {
   // return an object with the index and score
   // of the best move
   if (player === game.computer) {
-    var maxScore = Math.max.apply(null, scoreList.map(function (obj) {
+    let maxScore = Math.max.apply(null, scoreList.map(function (obj) {
       return obj.score;
     }));
 
@@ -244,7 +244,7 @@ function minimax(gameBoard, player, depth) {
       return obj.score == maxScore;
     });
   } else {
-    var minScore = Math.min.apply(null, scoreList.map(function (obj) {
+    let minScore = Math.min.apply(null, scoreList.map(function (obj) {
       return obj.score;
     }));
 
