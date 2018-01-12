@@ -20,21 +20,18 @@ const stat  = document.getElementById('status');
 const info  = document.getElementById('myAlert');
 const modal = document.getElementById('myModal');
 
-// if DOM is ready start the game
 if (document.readyState === 'complete' || document.readyState !== 'loading') {
   startGame();
 } else {
   document.addEventListener('DOMContentLoaded', startGame);
 }
 
-// initialized game board arrays
 function startGame() {
   for (let i = 0; i < 9; i++) {
     game.board[i] = '';
   }
 }
 
-// set the game
 function setGame(id) {
   if (id === 'x') {
     game.user = 'X';
@@ -46,20 +43,15 @@ function setGame(id) {
     game.computer = 'X';
     game.currentPlayer = 'computer';
     modal.style.display = 'none';
-    setTimeout(firstMove, 600);
+    setTimeout(firstMove, 50);
   }
 }
 
-// first move of the computer
-// if it sets to X, it chooses
-// random spot on the board
 function firstMove() {
   const randomSpot = Math.floor(Math.random() * 9);
   insertMove(randomSpot);
 }
 
-// insert the player character
-// to the game board
 function insertMove(id) {
   let gameField = document.getElementById('field-' + id);
 
@@ -91,18 +83,16 @@ function insertMove(id) {
 
 
 function checkForWinner(player) {
-  player === 'user' ? player = 'computer' : player = 'user';
 
-  let winningArr = hasWinner(game.board, game[player], true);
+  player === 'user' ? player = 'computer' : player = 'user';
+  const winningArr = hasWinner(game.board, game[player], true);
 
   if (winningArr !== true && winningArr !== false) {
     for (let i = 0; i < winningArr.length; i++) {
-      let winningField = document.getElementById('field-' + winningArr[i]);
+      let winningField = document.getElementById(`field-${winningArr[i]}`);
       winningField.classList.add('winner');
     }
 
-    // i'm confident with my AI algorithm
-    // it's either draw or you will lose :P
     stat.innerHTML = player === 'user' ? 'شما برنده شدید!' : 'شما بازنده شدید!';
     info.style.display = 'block';
     gameOver();
@@ -110,9 +100,6 @@ function checkForWinner(player) {
 
 }
 
-// game is over remove the onClick attribute
-// of remaining empty field and reset the
-// game board object to prevent Draw
 function gameOver() {
   const remainFields = checkEmptyFields(game.board);
 
@@ -126,8 +113,6 @@ function gameOver() {
   startGame(); // reset the game.board
 }
 
-// check if there is no empty field in the
-// game board and no winners it means draw
 function checkForDraw() {
   if (game.board.indexOf('') === -1) {
     stat.innerHTML = 'مساوی';
@@ -155,8 +140,6 @@ function resetGame() {
   modal.style.display = 'flex';
 }
 
-// check for winner based
-// in the winning combination array
 function hasWinner(gameBoard, player, winner = false) {
   for (let i = 0; i < winCombination.length; i++) {
     if (gameBoard[winCombination[i][0]] === player &&
@@ -174,8 +157,6 @@ function hasWinner(gameBoard, player, winner = false) {
   return false;
 }
 
-// look for empty spot on the game board and
-// return an array of index of empty spot
 function checkEmptyFields(gameBoard) {
   const emptyFields = [];
   for (let i = 0; i < gameBoard.length; i++) {
@@ -186,9 +167,6 @@ function checkEmptyFields(gameBoard) {
   return emptyFields;
 }
 
-// AI - unbeatable
-// decision making of computer player
-// using minimax algorithm
 function minimax(gameBoard, player, depth) {
 
   let emptyFields = checkEmptyFields(gameBoard);
@@ -207,7 +185,6 @@ function minimax(gameBoard, player, depth) {
     };
   }
 
-  // array of scores object of every game state
   let scoreList = [];
   depth++;
 
@@ -226,15 +203,11 @@ function minimax(gameBoard, player, depth) {
       objScore.score = result.score;
     }
 
-    // reset the empty field
     gameBoard[emptyFields[i]] = '';
 
     scoreList.push(objScore);
   }
 
-  // look for maximum and minimum score
-  // return an object with the index and score
-  // of the best move
   if (player === game.computer) {
     let maxScore = Math.max.apply(null, scoreList.map(function (obj) {
       return obj.score;

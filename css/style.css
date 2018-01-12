@@ -10,6 +10,7 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    background-color: #405362;
     font-family: 'IRANSans', sans-serif;
 }
 
@@ -24,7 +25,7 @@ body {
 }
 
 .modal-content {
-    width: 250px;
+    width: 260px;
     margin: 50px auto;
     border-radius: 12px;
     border: 1px solid #ccc;
@@ -73,9 +74,17 @@ body {
 .btn {
     color: #fff;
     border: none;
+    cursor: pointer;
     border-radius: 3px;
-    background-color: #2196f3;
+    background: #2196f3;
+    transition: all .2s ease;
+    box-shadow: 0px 3px 6px #00000045;
     font-family: 'IRANSans', sans-serif;
+}
+
+.btn:hover {
+    background: #0c85e9;
+    box-shadow: 0px 3px 14px #0000006e;
 }
 
 .btn-figure {
@@ -86,13 +95,21 @@ body {
 }
 
 .game-board {
-    width: 250px;
-    height: 250px;
+    width: 260px;
+    height: 260px;
     margin: 50px auto;
     display: block;
-    /* if don't support flexbox*/
+    color: #555;
     display: flex;
     flex-wrap: wrap;
+}
+
+.game-board-inner {
+    padding: 4px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .game-field {
@@ -109,13 +126,17 @@ body {
     align-items: center;
 }
 
+.game-field[onclick] {
+    cursor: pointer;
+}
+
 #field-0,
 #field-1,
 #field-2,
 #field-3,
 #field-4,
 #field-5 {
-    border-bottom: 3px solid #555;
+    border-bottom: 3px solid #999;
 }
 
 #field-0,
@@ -124,7 +145,7 @@ body {
 #field-1,
 #field-4,
 #field-7 {
-    border-left: 3px solid #555;
+    border-left: 3px solid #999;
 }
 
 .winner {
